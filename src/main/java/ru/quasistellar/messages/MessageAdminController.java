@@ -26,9 +26,18 @@ public class MessageAdminController {
     @RequestMapping(value="/savemessages", method = RequestMethod.POST)
 
     public @ResponseBody String saveMessages(Message message) {
-
-                message = messageService.create(message);
-                ms.sendM(message.getName(), message.getEmail(), message.getTel(), message.getContent());
+        String name = message.getName();
+        String email = message.getEmail();
+        String tel = message.getTel();
+        String content = message.getContent();
+        message = messageService.create(message);
+        Thread myThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ms.sendM(name, email, tel, content);
+            }
+        });
+        myThread.start();
                 return "OK";
 
     }
