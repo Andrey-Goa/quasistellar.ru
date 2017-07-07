@@ -85,7 +85,7 @@ public class PortfolioAdminController {
         if (file != null) {
             String name = file.getOriginalFilename();
             PortfolioFile portfolioFile = new PortfolioFile();
-            boolean load = portfolioFile.loadFile(portfolio,file);
+            boolean load = portfolioFile.loadFile(file);
                 if(load) {
                     portfolio.setImgPath(name);
                 }
