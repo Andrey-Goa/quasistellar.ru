@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 
 public class PortfolioFile {
     private static final String DIR = "src/main/resources/static/img/portfolio/";
-    public boolean loadFile(Portfolio portfolio, MultipartFile file) {
+    public boolean loadFile(MultipartFile file) {
         if (!(file.isEmpty())) {
             String name = file.getOriginalFilename();
             File f = new File(DIR,name);
